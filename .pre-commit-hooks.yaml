@@ -1,0 +1,27 @@
+- id: terragrunt-init-all
+  name: "Initialize all with Terragrunt"
+  description: "Searches for terraform lock files and runs terragrunt init in the directory"
+  entry: "find . -type f -name '.terraform.lock.hcl' -execdir terragrunt init \\;"
+  pass_filenames: false
+  language: system
+  # always_run: true
+  require_serial: true
+  files: ".terraform.lock.hcl"
+- id: terraform-init-all
+  name: "Initialize all with Terraform"
+  description: "Searches for terraform lock files and runs terraform init in the directory"
+  entry: "find . -type f -name '.terraform.lock.hcl' -execdir terraform init \\;"
+  pass_filenames: false
+  language: system
+  # always_run: true
+  require_serial: true
+  files: ".terraform.lock.hcl"
+- id: lock-all-terraform-providers
+  name: "Lock all Terraform providers"
+  description: "Searches for terraform lock files and updates the lockfile for common architectures"
+  entry: "find . -type f -name '.terraform.lock.hcl' -execdir terraform providers lock -platform=darwin_amd64 -platform=linux_amd64 -platform=darwin_arm64 \\;"
+  pass_filenames: false
+  language: system
+  # always_run: true
+  require_serial: true
+  files: ".terraform.lock.hcl"

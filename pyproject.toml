@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "terraform-precommit-hooks"
+version = "0.1.0"
+description = "Pre-commit hooks for Terraform/Terragrunt"
+authors = ["Richtman, Ariel <10679234+arichtman@users.noreply.github.com>"]
+license = "GPL-3.0+"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.3.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pymarkdown]
+plugins.line-length.line_length = 160
+plugins.line-length.code_block_line_length = 160
